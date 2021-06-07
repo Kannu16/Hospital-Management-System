@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+      <div class="index_hero_container">
+          <div class="form_box">
+            <div class="hospital_brand">
+                <i class="fas fa-clinic-medical h-icon"></i>
+                <h3>KHOSPITAL</h3>
+              </div>
+               <div class="button_box">
+                   <div id="btn"></div>
+                   <button type="button" class="toggle_btn" onclick="doctor()">Doctor</button>
+                   <button type="button" class="toggle_btn" onclick="staff()">Staff</button>
+                   <button type="button" class="toggle_btn" onclick="admin()">Admin</button>
+               </div>
+                 <!-- Doctor -->
+               <form action="" method="POST" id="doctor" class="input_form">
+                   <img src="images/doctor.png" alt="doctor" class="d_icon">
+                   <input type="email" class="d_input_email" value="doctor@gmail.com" autocomplete="off" name="d_email"  id="d_email" placeholder="Doctor registered email" required />
+                   <input type="password" class="d_input_password" name="d_password"   id="d_password" placeholder="Enter password" required />
+                   <button type="submit" class="d_submit_btn" id="d_submit_btn" onclick="doctorLogin(this.form)"> Login</button>
+               </form>
+               <!-- stuff -->
+               <form action="" method="POST" id="staff" class="input_form">
+                 <img src="images/staff.png" alt="staff" class="s_icon">
+                <input type="email" class="d_input_email" autocomplete="off" value="staff@gmail.com" name="s_email"  id="s_email" placeholder="Staff registered email" required />
+                <input type="password" class="d_input_password" name="s_password"  id="s-password" placeholder="Enter password" required />
+                <button type="submit" class="d_submit_btn"  id="s_submit_btn" onclick="staffLogin(this.form)" > Login</button>
+            </form>
+             <!-- admin -->
+            <form action="" method="POST" id="admin" class="input_form">
+              <img src="images/admin.png" alt="admin" class="a_icon">
+                <input type="email" class="d_input_email" autocomplete="off" value="admin@gmail.com" name="a_email"  id="a_email" placeholder="Admin email" required />
+                <input type="password" class="d_input_password" name="a_password"  id="a-password" placeholder="Enter password" required />
+                <button type="submit" class="d_submit_btn" id="a_submit_btn" onclick="adminLogin(this.form)"> Login</button>
+            </form>
+          </div>
+      </div>
+      <script src="js/index.js"></script>
+      <script src="js/all.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.hero_container {
+  width: 90%;
+  margin: auto;
+}
+.h-icon {
+  font-size: 40px;
+}
+.navbar-nav a:hover {
+  background-color: #fff;
+  color: #333;
+  border-radius: 50px;
+}
+table.stafftable {
+  width: 100%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 1px;
+  border-color: #861657;
+  border-style: solid;
+  color: #000000;
+}
+
+table.stafftable td,
+table.stafftable th {
+  border-width: 1px;
+  border-color: #861657;
+  border-style: solid;
+  padding: 3px;
+}
+
+table.stafftable thead {
+  background-color: #861657;
+}
+
+.p_content th {
+  padding: 15px 30px;
+  background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+}
+.desktop-text {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .patients_table {
+    display: none;
+  }
+  .desktop-text {
+    display: block;
+  }
+}

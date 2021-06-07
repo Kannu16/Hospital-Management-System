@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.index_hero_container {
+  min-height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(#861657, rgba(4, 9, 30, 0.4)),
+    url("../images/hospital.jpg");
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.form_box {
+  width: 400px;
+  height: 400px;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  padding: 5px;
+}
+.hospital_brand {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 20px;
+  align-items: baseline;
+}
+.hospital_brand h3 {
+  font-size: 2rem;
+}
+.h-icon {
+  color: #861657;
+  font-size: 3rem;
+}
+.button_box {
+  width: 220px;
+  margin: 35px auto;
+  position: relative;
+  border-radius: 30px;
+  background-color: #ececec;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.toggle_btn {
+  padding: 10px 17px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+}
+#btn {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 80px;
+  height: 100%;
+  background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+  border-radius: 30px;
+  transition: 0.5s;
+}
+.d_icon,
+.s_icon,
+.a_icon {
+  width: 50px;
+  position: relative;
+  left: 40%;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
+  background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+}
+.input_form {
+  top: 180px;
+  position: absolute;
+  width: 280px;
+  transition: 0.5s;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.d_input_email,
+.d_input_password {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  background-color: #dcdcdc;
+  outline-color: #861657;
+  font-weight: 600;
+}
+.d_submit_btn {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  top: 20px;
+  cursor: pointer;
+  border: none;
+  background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+  border-radius: 30px;
+}
+#staff,
+#admin {
+  display: none;
+}

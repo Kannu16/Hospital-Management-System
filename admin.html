@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <title>Khospital Admin</title>
+  </head>
+
+  <!-- Doctors Section -->
+
+  <body>
+    <div class="admin_main_header">
+      <h3><i class="fas fa-clinic-medical h-icon"></i>KHOSPITAL</h3>
+      <button class="a_logout">
+        <a href=""><i class="fas fa-sign-out-alt"></i>Logout</a>
+      </button>
+    </div>
+    <div class="hero_container">
+      <nav>
+        <div class="side_nab">
+          <ul>
+            <form class="a_profile_section">
+              <img
+                src="./images/admin.png"
+                alt=""
+                srcset=""
+                class="admin_profile"
+              />
+              <h4 class="admin_name">Admin</h4>
+              <input
+                type="file"
+                name="img"
+                id="img"
+                class="admin_profile_img"
+              />
+              <button type="reset" class="admin_profile_change">Change</button>
+            </form>
+            <li>
+              <a href="#">
+                <span class="icon">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </span>
+                <span class="title">Profile</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="admin.html">
+                <span class="icon"
+                  ><i class="fa fa-home" aria-hidden="true"></i>
+                </span>
+                <span class="title">Home</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#">
+                <span class="icon"><i class="fas fa-code-branch"></i></span>
+                <span class="title">Create Branch</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#Doctor">
+                <span class="icon"
+                  ><i class="fa fa-user-md" aria-hidden="true"></i
+                ></span>
+                <span class="title">Create Doctor</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#Staff">
+                <span class="icon">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                </span>
+                <span class="title">Create Staff</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#doctorsList">
+                <span class="icon"
+                  ><i class="fa fa-user-md" aria-hidden="true"></i
+                ></span>
+                <span class="title">Doctor List</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#staffsList">
+                <span class="icon">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                </span>
+                <span class="title">Staff List</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <section>
+        <div class="admin_viewport">
+          <div class="graph_container">
+            <div
+              id="piechart"
+              style="height: 400px; width: 500px; z-index: -1"
+            ></div>
+            <div id="columnchart_values"></div>
+          </div>
+          <h1 class="desktop-text">
+            Please use desktop for view patients and staffs !
+          </h1>
+
+          <div class="staff_doctor">
+            <div class="doctor_search_heading">
+              <h1>All Doctors List</h1>
+              <input
+                type="search"
+                name="search_doctor"
+                id="search_doctor_input"
+                onkeyup="searchDoctor()"
+                placeholder="Search Doctor"
+              />
+            </div>
+            <div class="doctor_list">
+              <table class="list" id="doctorsList">
+                <thead>
+                  <tr>
+                    <th>Full Name</th>
+                    <th>Joining Date</th>
+                    <th>Department</th>
+                    <th>Email</th>
+                    <th>Salary</th>
+                    <th>City</th>
+                    <th>Mobile</th>
+                    <th>Gender</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="newInsertedDoctorList"
+                  id="search_doctors"
+                ></tbody>
+              </table>
+            </div>
+            <div class="doctor_search_heading">
+              <h1>All Staff List</h1>
+              <input
+                type="search"
+                name="search_staff"
+                id="search_staff_input"
+                onkeyup="searchStaff()"
+                placeholder="Search Staff"
+              />
+            </div>
+            <div class="staff_list">
+              <table class="list" id="staffsList">
+                <thead>
+                  <tr>
+                    <th>Full Name</th>
+                    <th>Joining Date</th>
+                    <th>Department</th>
+                    <th>Email</th>
+                    <th>Salary</th>
+                    <th>City</th>
+                    <th>Mobile</th>
+                    <th>Gender</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="newInsertedStaffsList d_input_value"
+                  id="search_staffs"
+                ></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 
+modal for doctor -->
+
+      <div class="modal" id="Doctor">
+        <div class="modal-content">
+          <div class="modal-body">
+            <img src="./images/doctor.png" class="d_reg_icon" />
+            <form
+              onsubmit="event.preventDefault();onFormSubmit();"
+              autocomplete="off"
+              action=""
+              method="POST"
+              class="d_form"
+            >
+              <div class="part1">
+                <label for="">Name</label>
+                <input
+                  type="text"
+                  id="d_name"
+                  name="d_name"
+                  placeholder="Enter doctor name"
+                  required
+                />
+
+                <label for="">Joining date</label>
+                <input type="date" name="d_j_date" id="d_j_date" />
+
+                <label for="">Department</label>
+                <select class="d_deprt" id="d_deprt" name="d_deprt" required>
+                  <option value="">Select</option>
+                  <option value="Cardiology">Cardiology</option>
+                  <option value="Oncology">Oncology</option>
+                  <option value="Neurology">Neurology</option>
+                  <option value="Urology">Urology</option>
+                  <option value="Surgical Gastroenterologists">
+                    Surgical Gastroenterologists
+                  </option>
+                  <option value="Medical Gastroenterologists">
+                    Medical Gastroenterologists
+                  </option>
+                  <option value="Dermatologists">Dermatologists</option>
+                </select>
+                <label for="">Number</label>
+                <input
+                  type="number"
+                  id="d_number"
+                  name="d_number"
+                  placeholder="Enter doctor number"
+                  required
+                />
+              </div>
+
+              <div class="part2">
+                <label for="">Email</label>
+                <input
+                  type="email"
+                  id="d_email"
+                  name="d_email"
+                  placeholder="Enter doctor Email id"
+                  required
+                />
+
+                <label for="">Salary</label>
+                <input
+                  type="number"
+                  id="d_salary"
+                  name="d_salary"
+                  placeholder="Enter doctor salary"
+                  required
+                />
+
+                <label for="">City</label>
+                <input
+                  type="text"
+                  id="d_city"
+                  name="d_city"
+                  placeholder="Enter doctor city"
+                  required
+                />
+
+                <label for="">Gender</label>
+                <select class="d_sex" name="d_sex" id="d_sex">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+                <button type="submit" id="d_register" class="d_register">
+                  REGISTER
+                </button>
+              </div>
+            </form>
+          </div>
+          <a href="#close"
+            ><i class="fa fa-window-close" aria-hidden="true"></i
+          ></a>
+        </div>
+      </div>
+
+      <!-- End doctor Section -->
+
+      <!-- modal for  staffs -->
+
+      <div class="modal" id="Staff">
+        <div class="modal-content">
+          <div class="modal-body">
+            <img src="./images/staff.png" class="d_reg_icon" />
+            <form
+              onsubmit="event.preventDefault();onStaffsFormSubmit();"
+              autocomplete="off"
+              action=""
+              method="POST"
+              class="d_form"
+            >
+              <div class="part1">
+                <label for="">Name</label>
+                <input
+                  type="text"
+                  id="s_name"
+                  name="s_name"
+                  placeholder="Enter staff name"
+                  required
+                />
+
+                <label for="">Joining date</label>
+                <input type="date" name="s_j_date" id="s_j_date" />
+
+                <label for="">Department</label>
+                <select class="d_deprt" id="s_deprt" name="s_deprt" required>
+                  <option value="">Select</option>
+                  <option value="Cardiology">Receptionist</option>
+                  <option value="Oncology">Technician</option>
+                  <option value="Neurology">Pharmacist</option>
+                  <option value="Urology">Data entry</option>
+                </select>
+                <label for="">Number</label>
+                <input
+                  type="number"
+                  id="s_number"
+                  name="s_number"
+                  placeholder="Enter staff number"
+                  required
+                />
+              </div>
+
+              <div class="part2">
+                <label for="">Email</label>
+                <input
+                  type="email"
+                  id="s_email"
+                  name="s_email"
+                  placeholder="Enter staff Email id"
+                  required
+                />
+
+                <label for="">Salary</label>
+                <input
+                  type="number"
+                  id="s_salary"
+                  name="s_salary"
+                  placeholder="Enter staff salary"
+                  required
+                />
+
+                <label for="">City</label>
+                <input
+                  type="text"
+                  id="s_city"
+                  name="s_city"
+                  placeholder="Enter staff city"
+                  required
+                />
+
+                <label for="">Gender</label>
+                <select class="s_sex" name="s_sex" id="s_sex">
+                  <option value="">Select</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+                <button type="submit" id="s_register" class="d_register">
+                  REGISTER
+                </button>
+              </div>
+            </form>
+          </div>
+          <a href="#close"
+            ><i class="fa fa-window-close" aria-hidden="true"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+
+    <!---End Modal staff ---->
+
+    <!-- script for chart -->
+    <script type="text/javascript">
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Task", "Hours per Day"],
+          ["Full Recovered", 27],
+          ["Total Patient", 55],
+          ["Treatment Going on", 15],
+          ["New patient", 13],
+        ]);
+
+        var options = {
+          title: "Patients Activities",
+        };
+
+        var chart = new google.visualization.PieChart(
+          document.getElementById("piechart")
+        );
+
+        chart.draw(data, options);
+      }
+    </script>
+    <!-- ///Colum charts -->
+    <script>
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ["Total", "Total", { role: "style" }],
+          ["Doctor", 12, "#b87333"],
+          ["Patients", 19, "silver"],
+          ["Recovered", 9, "gold"],
+          ["Staffs", 10, "color: #e5e4e2"],
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([
+          0,
+          1,
+          {
+            calc: "stringify",
+            sourceColumn: 1,
+            type: "string",
+            role: "annotation",
+          },
+          2,
+        ]);
+
+        var options = {
+          title: "Statistic of Total doctor,staffs and Patients",
+          width: 600,
+          height: 400,
+          bar: { groupWidth: "95%" },
+          legend: { position: "none" },
+        };
+        var chart = new google.visualization.ColumnChart(
+          document.getElementById("columnchart_values")
+        );
+        chart.draw(view, options);
+      }
+    </script>
+
+    <script src="./js/d_crud.js"></script>
+    <script src="./js/s_crud.js"></script>
+    <script src="js/all.min.js"></script>
+  </body>
+</html>

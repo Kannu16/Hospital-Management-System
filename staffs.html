@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/staff.css" />
+    <title>Khospital Staffs</title>
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light fixed-top"
+      style="
+        background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      "
+    >
+      <div class="container-fluid">
+        <h3 class="navbar-brand hospital_brand">
+          <i class="fas fa-clinic-medical h-icon"></i>KHOSPITAL
+        </h3>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item mb-0">
+              <a
+                class="nav-link active"
+                style="padding: 9px 20px; font-size: 500"
+                href="#p_add_form"
+                >Add Patient</a
+              >
+            </li>
+
+            <li class="nav-item mb-0">
+              <a
+                class="nav-link active"
+                style="padding: 9px 20px"
+                href="#patientsList"
+                >View Patient</a
+              >
+            </li>
+
+            <li class="nav-item mb-0">
+              <a
+                class="nav-link active"
+                style="padding: 9px 20px"
+                data-bs-toggle="offcanvas"
+                href="#offcanvasExample"
+                role="button"
+                aria-controls="offcanvasExample"
+                >Profile</a
+              >
+            </li>
+          </ul>
+
+          <form autocomplete="off" class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search Patients"
+              id="search_patient_input"
+              onkeyup="searchPatient()"
+              aria-label="Search"
+            />
+          </form>
+          <button class="btn btn-outline-light" type="submit">
+            <i class="fas fa-sign-out-alt"></i> LogOut
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content-container">
+      <div class="graph-section">
+        <div>
+          <canvas id="myChart" width="350" height="350"></canvas>
+        </div>
+
+        <div>
+          <canvas id="myBarChart" width="350" height="350"></canvas>
+        </div>
+      </div>
+      <div class="add_view_patient">
+        <div class="row">
+          <div class="col-md-4 p_add_form" id="p_add_form">
+            <h1 style="font-weight: 600">Add New Patients</h1>
+            <hr />
+            <form
+              method="POST"
+              onsubmit="event.preventDefault();onPatientFormSubmit();"
+              autocomplete="off"
+            >
+              <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="p_name"
+                  placeholder="Enter Patient Name"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label"
+                  >Age</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="p_age"
+                  placeholder="Enter Patient Age"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label"
+                  >Gender</label
+                >
+                <select name="" class="form-select" id="p_sex" required>
+                  <option value="">Select</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label"
+                  >Admit Date</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="p_a_date"
+                  placeholder="Enter admit Patient Admit Date"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label"
+                  >Mobile</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="p_mobile"
+                  placeholder="Enter Patient Phone Number"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="p_address"
+                  placeholder="Enter patients address"
+                  required
+                />
+              </div>
+              <button
+                class="btn"
+                type="submit"
+                style="background-color: #861657; color: white; width: 100%"
+              >
+                Add
+              </button>
+            </form>
+            <h1 class="text-center desktop_text mt-3">
+              Please Use desktop For view Patients
+            </h1>
+          </div>
+          <div class="col-md-8 p_view_form">
+            <h1 style="font-weight: 600">Patients List</h1>
+            <hr />
+            <div class="patients_list">
+              <table class="list" id="patientsList">
+                <thead>
+                  <tr class="p_content">
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Admit Date</th>
+                    <th>Mobile</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody
+                  class="newInsertedPatientList"
+                  id="search_patients"
+                ></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- off Canvas for staff  -->
+
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body text-center">
+        <form action="">
+          <h3>My Profile</h3>
+          <img
+            src="./images/staff.png"
+            alt="staff"
+            style="
+              width: 100px;
+              border-radius: 50%;
+              box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+              background-color: #861657;
+            "
+          />
+          <p>Staff</p>
+          <input
+            type="file"
+            class="form-control"
+            name="S_name"
+            id="S_name"
+            style="width: 50%; margin: auto"
+          />
+          <div class="btn mt-2" style="background-color: black; color: #fff">
+            Change
+          </div>
+        </form>
+        <table class="stafftable mt-5">
+          <tbody>
+            <tr>
+              <td style="font-weight: 600">JoinIng Date</td>
+              <td>06-06-2021</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 600">Department</td>
+              <td>Receptionist</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 600">Contractual/Permanent</td>
+              <td>Permanent</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/patient.js"></script>
+  </body>
+</html>

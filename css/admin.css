@@ -1,0 +1,370 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* css for modal */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.admin_main_header {
+  height: 5vh;
+  background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.admin_main_header h3 {
+  display: flex;
+  align-items: baseline;
+}
+.h-icon {
+  font-size: 30px;
+}
+.admin_main_header a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 15px;
+}
+.admin_main_header button {
+  background: transparent;
+  border: 1px solid #fff;
+  padding: 5px;
+  border-radius: 2px;
+}
+.admin_main_header button:hover {
+  background-color: #333;
+  color: #fff;
+  border: none;
+}
+.admin_main_header {
+  display: flex;
+  justify-content: space-between;
+}
+.button {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button a {
+  text-decoration: none;
+  padding: 15px 40px;
+  background: #333;
+  margin: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  box-shadow: 0px 0px 10px grey;
+  transition: 0.7s;
+}
+.modal-content {
+  height: 0;
+  padding: 20px;
+  width: 400px;
+  border: 1px solid black;
+  position: fixed;
+  left: 50%;
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+  transform: translate(-50%, -200%);
+}
+.modal-content a {
+  position: absolute;
+  text-decoration: none;
+  padding: 10px;
+  background: #861657;
+  margin: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  color: #fff;
+  box-shadow: 0px 0px 10px grey;
+  transition-property: transform;
+  transition: 0.5s;
+  right: 0px;
+  top: 0;
+}
+.modal::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+.modal:target::before {
+  display: block;
+}
+.modal:target .modal-content {
+  top: 10%;
+  transform: translate(-50%, 0%);
+  transition: 1s;
+  width: 60vw;
+  height: 80vh;
+}
+.d_form {
+  display: flex;
+  justify-content: center;
+}
+.part1 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.part2 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.d_reg_icon {
+  width: 70px;
+  position: relative;
+  left: 45%;
+  border-radius: 50%;
+  background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+.d_form input,
+select {
+  padding: 8px 10px;
+  margin: 10px;
+  border: none;
+  outline: none;
+  background-color: #dcdcdc;
+}
+.d_deprt option {
+  padding-top: 30px;
+}
+.d_form input:hover {
+  border-color: #861657;
+}
+.d_form label {
+  margin: 10px;
+  font-weight: 600;
+  color: #861657;
+}
+.d_register {
+  position: absolute;
+  bottom: 10%;
+  width: 100px;
+  padding: 10px;
+  background-color: #861657;
+  border: none;
+  color: #fff;
+  right: 45%;
+  cursor: pointer;
+}
+
+/* End modal */
+.hero_container {
+  width: 100%;
+  position: absolute;
+  top: 20px;
+}
+.side_nab {
+  position: fixed;
+  min-height: 100vh;
+  width: 50px;
+  height: 100%;
+  background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+  transition: 0.5s;
+  overflow: hidden;
+}
+.side_nab:hover {
+  width: 250px;
+}
+.a_profile_section {
+  padding-bottom: 20px;
+}
+.admin_profile {
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.admin_profile_img {
+  padding: 5px;
+  position: relative;
+  left: 40px;
+  cursor: pointer;
+}
+.admin_profile_change {
+  padding: 5px;
+  position: relative;
+  left: 40%;
+
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.admin_name {
+  margin: 5px;
+  position: relative;
+  left: 40%;
+}
+.side_nab ul {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  width: 100%;
+}
+.side_nab ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+}
+.side_nab ul li:hover {
+  background: #000;
+}
+.admin_profile {
+  width: 100px;
+  position: relative;
+  left: 30%;
+}
+.side_nab ul li a {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  display: flex;
+  color: #333;
+  font-weight: 600;
+}
+.side_nab ul li a:hover {
+  color: #ddd;
+}
+.icon {
+  position: relative;
+  display: block;
+  min-width: 50px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+.admin_viewport {
+  padding: 30px;
+  width: 90%;
+  margin: auto;
+}
+.staff_doctor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.graph_container {
+  display: flex;
+  height: 55vh;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.graph_container h1 {
+  color: #fff;
+}
+.list thead tr th {
+  padding: 10px 45px;
+}
+.list thead tr {
+  background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+}
+.doctor_list,
+.staff_list {
+  min-height: 40vh;
+}
+.doctor_list,
+.staff_list {
+  background-color: #dcdcdc;
+}
+.doctor_search_heading h1,
+input {
+  padding: 10px 15px;
+  outline-color: #861657;
+  border: none;
+}
+.doctor_search_heading input {
+  background-color: #dcdcdc;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.doctor_search_heading {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.d_edit_icon {
+  font-size: 20px;
+  color: green;
+  position: relative;
+  right: 10px;
+}
+.d_delete_icon {
+  font-size: 20px;
+  color: red;
+}
+.d_view_icon {
+  font-size: 20px;
+  position: relative;
+  left: 10px;
+  color: #006400;
+}
+.d_input_value tr,
+td {
+  text-align: center;
+  border: 1px solid #861657;
+}
+.doctor_view_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.desktop-text {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .staff_doctor {
+    visibility: hidden;
+  }
+  .graph_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 20%;
+    z-index: -1;
+  }
+  .desktop-text {
+    display: block;
+  }
+}

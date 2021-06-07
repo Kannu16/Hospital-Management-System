@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Khospital Doctors</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/doctor.css" />
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light fixed-top"
+      style="
+        width: 90%;
+        margin: auto;
+        background-image: linear-gradient(326deg, #861657 0, #ffa69e 74%);
+      "
+    >
+      <div class="container-fluid">
+        <h3
+          class="navbar-brand hospital_brand d-flex"
+          style="align-items: baseline"
+        >
+          <i class="fas fa-clinic-medical h-icon"></i>KHOSPITAL
+        </h3>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="patientsList"
+              >View Patients</a
+            >
+            <a
+              class="nav-link active"
+              aria-current="page"
+              data-bs-toggle="offcanvas"
+              href="#offcanvasExample"
+              role="button"
+              aria-controls="offcanvasExample"
+              href="#"
+              >Profile</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body text-center">
+        <form action="">
+          <h3>My Profile</h3>
+          <img
+            src="./images/doctor.png"
+            alt="staff"
+            style="
+              width: 100px;
+              border-radius: 50%;
+              box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+              background-color: #861657;
+            "
+          />
+          <p>Doctor</p>
+          <input
+            type="file"
+            class="form-control"
+            name="S_name"
+            id="S_name"
+            style="width: 50%; margin: auto"
+          />
+          <div class="btn mt-2" style="background-color: #000; color: #fff">
+            Change
+          </div>
+        </form>
+        <table class="stafftable mt-5">
+          <tbody>
+            <tr>
+              <td style="font-weight: 600">JoinIng Date</td>
+              <td>07-11-2021</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 600">Department</td>
+              <td>Neurologist</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 600">Contractual/Permanent</td>
+              <td>Permanent</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-dark mt-4">Logout</button>
+      </div>
+    </div>
+    <div
+      class="row"
+      style="
+        width: 90%;
+        margin: auto;
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+        margin-top: 60px;
+      "
+    >
+      <div class="col-md-6 col_chart">
+        <div id="piechart" style="height: 400px; width: 600px"></div>
+      </div>
+      <div class="col-md-6"><div id="columnchart_values"></div></div>
+    </div>
+    <div class="patients_table" style="width: 90%; margin: auto">
+      <div class="p_view_form">
+        <h1 style="font-weight: 600">Patients List</h1>
+        <hr />
+        <div class="patients_list">
+          <table class="list" id="patientsList">
+            <thead>
+              <tr class="p_content">
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Admit Date</th>
+                <th>Mobile</th>
+                <th>Address</th>
+                <th>View</th>
+              </tr>
+            </thead>
+            <tbody class="newInsertedPatientList" id="search_patients"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <h1 class="text-center desktop-text text-warning">
+      Please Use desktop To view Patient !
+    </h1>
+    <script>
+      function drawChart() {
+        var a = google.visualization.arrayToDataTable([
+            ["Total", "Total", { role: "style" }],
+            ["Doctor", 12, "#b87333"],
+            ["Patients", 19, "silver"],
+            ["Recovered", 9, "gold"],
+            ["Staffs", 10, "color: #e5e4e2"],
+          ]),
+          t = new google.visualization.DataView(a);
+        t.setColumns([
+          0,
+          1,
+          {
+            calc: "stringify",
+            sourceColumn: 1,
+            type: "string",
+            role: "annotation",
+          },
+          2,
+        ]);
+        var o = {
+            title: "Statistic of Total doctor,staffs and Patients",
+            width: 600,
+            height: 400,
+            bar: { groupWidth: "95%" },
+            legend: { position: "none" },
+          },
+          e = new google.visualization.ColumnChart(
+            document.getElementById("columnchart_values")
+          );
+        e.draw(t, o);
+      }
+      google.charts.load("current", { packages: ["corechart"] }),
+        google.charts.setOnLoadCallback(drawChart);
+    </script>
+    <script src="js/doctor.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/all.min.js"></script>
+  </body>
+</html>
